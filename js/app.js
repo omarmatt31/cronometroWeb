@@ -1,21 +1,46 @@
+function convertirHoraString(hora, minuto, segundo, centisegundo){
+    let detalleCronometro
+    if(hora < 10){
+        detalleCronometro = `0${hora} : `
+    }else {
+        detalleCronometro = `${hora} : `
+    }
+    if(minuto < 10){
+        detalleCronometro += `0${minuto} : `
+    }else {
+        detalleCronometro += `${minuto} : `
+    }
+    if(segundo < 10){
+        detalleCronometro += `0${segundo} : `
+    }else {
+        detalleCronometro += `${segundo} : `
+    }
+    if(centisegundo < 10){
+        detalleCronometro += `0${centisegundo}`
+    }else {
+        detalleCronometro += `${centisegundo}`
+    }
+    return detalleCronometro
+
+}
 const avanzaCronometro = () => {
     const detalleCronometro = document.querySelector('#cronometro')
     if(centisegundo < 100){
         centisegundo ++
-        detalleCronometro.textContent = `${hora} : ${minuto} : ${segundo} : ${centisegundo}`
+        detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)//`${hora} : ${minuto} : ${segundo} : ${centisegundo}`
     }else{
         centisegundo = 0
         segundo ++
         if(segundo < 60){
-            detalleCronometro.textContent = `${hora} : ${minuto} : ${segundo} : ${centisegundo}`
+            detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)
         }else {
             segundo = 0
             minuto ++
             if(minuto < 60){
-                detalleCronometro.textContent = `${hora} : ${minuto} : ${segundo} : ${centisegundo}`
+                detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)
             }else{
                 hora ++
-                detalleCronometro.textContent = `${hora} : ${minuto} : ${segundo} : ${centisegundo}`
+                detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)
             }
             
         }
@@ -37,7 +62,7 @@ const pausarCronometro = () =>{
         clearInterval(intervaloId)
     }
     const detalleCronometro = document.querySelector('#cronometro')
-    detalleCronometro.textContent = `${hora} : ${minuto} : ${segundo} : ${centisegundo}`
+    detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)
 
 }
 
