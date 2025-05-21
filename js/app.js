@@ -39,6 +39,7 @@ const avanzaCronometro = () => {
             if(minuto < 60){
                 detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)
             }else{
+                minuto = 0
                 hora ++
                 detalleCronometro.textContent = convertirHoraString(hora, minuto, segundo, centisegundo)
             }
